@@ -6,4 +6,4 @@
 
 (defrecord CreateEvent [event])
 
-(defrecord SearchResults [body])
+(defrecord CreateEventResults [body])

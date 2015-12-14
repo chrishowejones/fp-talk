@@ -1,6 +1,7 @@
 (ns fp-talk.processing
   (:require [petrol.core :refer [Message EventSource]]
-            [fp-talk.messages :as m]))
+            [fp-talk.messages :as m]
+            [fp-talk.rest :as rest]))
 
 
 (extend-protocol Message
@@ -23,4 +24,10 @@
   m/CreateEvent
   (watch-channels [_ {:keys [event]
                       :as app}]
-    (println "app in EventSource=" app ", event = " event)))
+    (println "app in EventSource=" app ", event = " event)
+    #{(rest/create-event event)}))
+
+(extend-protocol Message
+  m/CreateEventResults
+  (process-message [response app]
+    (assoc app :server-state (-> response))))
