@@ -7,7 +7,7 @@
 ;; define your app data so that it doesn't get over-written on reload
 
 (def initial-state
-  {:event {:name "" :speaker ""} :server-state nil})
+  {:event {:event/name "" :event/speaker ""} :server-state nil})
 
 (defonce !app
   (reagent/atom initial-state))

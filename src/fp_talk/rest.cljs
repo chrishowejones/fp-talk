@@ -8,5 +8,5 @@
   (->> (http/post "http://localhost:3000/q"
                   {:with-credentials? false
                    :edn-params {:type :create-event
-                                :event event}})
+                                :txn-data event}})
        (petrol/wrap m/map->CreateEventResults)))
