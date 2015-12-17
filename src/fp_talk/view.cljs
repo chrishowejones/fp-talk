@@ -9,24 +9,24 @@
 
 
 (defn- event-form
-  [ui-channel {:keys [event/name event/speaker] :as event}]
+  [ui-channel {:keys [name speaker] :as event}]
   [:table.table
    [:tr
     [:td [:label "Event name:"]]
     [:td [:input {:type :text
                   :placeholder "Event name..."
-                  :defaultValue event/name
+                  :defaultValue name
                   :on-change (send-value! ui-channel m/->ChangeEventName)}]]]
    [:tr
     [:td [:label "Speaker:"]]
     [:td [:input {:type :text
                   :placeholder "Speaker..."
-                  :defaultValue event/speaker
+                  :defaultValue speaker
                   :on-change (send-value! ui-channel m/->ChangeEventSpeaker)}]]]
    [:tr
     [:td
      [:button.btn.btn-success
-      {:on-click (send! ui-channel (m/->CreateEvent))}
+      {:on-click (send! ui-channel (m/->CreateEvent event))}
       "Go"]]]])
 
 
